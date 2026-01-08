@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Layout from './components/Layout/Layout';
+import Layout from './components/Layout/Layout.jsx';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import LoginPage from './pages/LoginPage';
