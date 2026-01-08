@@ -11,9 +11,7 @@ import {
 } from '../slices/urlSlice';
 import toast from 'react-hot-toast';
 
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://url-shortener-website-backend.vercel.app'
-  : 'http://localhost:5000';
+const API_BASE_URL = 'http://localhost:5000';
 
 export const fetchUserUrls = () => async (dispatch, getState) => {
   try {
