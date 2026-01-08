@@ -11,14 +11,14 @@ import toast from 'react-hot-toast';
 
 const API_BASE_URL = 
 process.env.NODE_ENV === 'production' 
-? 'https://URL-Shortener-backend.vercel.app/api'
-: 'http://localhost:5000/api';
+? 'https://url-shortener-website-backend.vercel.app'
+: 'http://localhost:5000';
 
 export const login = (credentials) => async (dispatch) => {
   try {
     dispatch(loginStart());
     
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch(registerStart());
     
-    const response = await fetch(`${API_BASE_URL}/auth/register`, {
+    const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export const getProfile = () => async (dispatch, getState) => {
     
     if (!token) return;
 
-    const response = await fetch(`${API_BASE_URL}/auth/profile`, {
+    const response = await fetch(`${API_BASE_URL}/api/auth/profile`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },

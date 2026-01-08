@@ -12,15 +12,15 @@ import {
 import toast from 'react-hot-toast';
 
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://URL-Shortener-backend.vercel.app/api'
-  : 'http://localhost:5000/api';
+  ? 'https://url-shortener-website-backend.vercel.app'
+  : 'http://localhost:5000';
 
 export const fetchUserUrls = () => async (dispatch, getState) => {
   try {
     dispatch(fetchUrlsStart());
     const { token } = getState().auth;
     
-    const response = await fetch(`${API_BASE_URL}/url/myurls`, {
+    const response = await fetch(`${API_BASE_URL}/api/url/myurls`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
@@ -44,7 +44,7 @@ export const shortenUrl = (longUrl) => async (dispatch, getState) => {
     dispatch(shortenUrlStart());
     const { token } = getState().auth;
     
-    const response = await fetch(`${API_BASE_URL}/url/shorten`, {
+    const response = await fetch(`${API_BASE_URL}/api/url/shorten`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const deleteUrl = (id) => async (dispatch, getState) => {
     dispatch(deleteUrlStart());
     const { token } = getState().auth;
     
-    const response = await fetch(`${API_BASE_URL}/url/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/url/${id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -98,7 +98,7 @@ export const getUrlStats = (id) => async (dispatch, getState) => {
   try {
     const { token } = getState().auth;
     
-    const response = await fetch(`${API_BASE_URL}/url/${id}/stats`, {
+    const response = await fetch(`${API_BASE_URL}/api/url/${id}/stats`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
